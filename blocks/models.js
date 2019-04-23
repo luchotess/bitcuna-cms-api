@@ -7,7 +7,8 @@ const BlockSchema = mongoose.Schema({
     name: {type: String, default: ''},
     parentId: {type: mongoose.Schema.Types.ObjectId, ref: 'Block'},
     fields: [{type: mongoose.Schema.Types.ObjectId, ref: 'Field'}],
-    childBlocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Block'}]
+    childBlocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Block'}],
+    isIterable: {type: Boolean}
 });
 
 BlockSchema.methods.saveChild = function() {

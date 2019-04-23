@@ -14,6 +14,42 @@ router.get('/', (req, res) => {
         .then(_blocks => res.json(_blocks));
 });
 
+function getBlockFields (block) {
+    const result = {};
+
+    block.fields.forEach((field) => {
+        result[field.key] = field.values;
+    });
+
+    return result;
+}
+
+function getChildBlocksAndFields (block) {
+    let result = {};
+
+    block.childBlocks.forEach((childBlock) => {
+
+        let resultChild = getBlockFields(childBlock);
+
+        childBlock.childBlocks.forEach((childChildBlock) => {
+
+            if (childChildBlock.isIterable) {
+                if (!resultChild[childChildBlock.name]) {
+                    resultChild[childChildBlock.name] = [];
+                }
+
+                resultChild[childChildBlock.name].push(getBlockFields(childChildBlock))
+            } else {
+                resultChild[childChildBlock.name] = getBlockFields(childChildBlock);
+            }
+        });
+
+        result[childBlock.name] = resultChild;
+    });
+
+    return result;
+}
+
 /**
  * Get content by page
  * */
@@ -30,35 +66,10 @@ router.get('/page/:page', (req, res) => {
         })
         .then(_block => {
 
-            const result = {};
+            // Get Parent Block Fields
+            let result = getBlockFields(_block);
 
-            _block.fields.forEach((field) => {
-                result[field.key] = field.values;
-            });
-
-            _block.childBlocks.forEach((childBlock) => {
-                let resultChild = {};
-
-                childBlock.fields.forEach((field) => {
-                    resultChild[field.key] = field.values;
-                });
-
-                childBlock.childBlocks.forEach((childChildBlock) => {
-                    if (!resultChild[childChildBlock.name]) {
-                        resultChild[childChildBlock.name] = [];
-                    }
-
-                    let childChildResult = {};
-
-                    childChildBlock.fields.forEach((field) => {
-                        childChildResult[field.key] = field.values;
-                    });
-
-                    resultChild[childChildBlock.name].push(childChildResult)
-                });
-
-                result[childBlock.name] = resultChild;
-            });
+            result = {...result, ...getChildBlocksAndFields(_block)};
 
             res.json(result)
         }).catch(err => res.json('page not found'));
