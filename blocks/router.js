@@ -15,6 +15,56 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * Get content by page
+ * */
+router.get('/page/:page', (req, res) => {
+    Block.findOne({parentId: {$exists: false}, name: req.params.page})
+        .populate({
+            path: 'childBlocks fields',
+            populate: {
+                path: 'childBlocks fields',
+                populate: {
+                    path: 'childBlocks fields'
+                }
+            }
+        })
+        .then(_block => {
+
+            const result = {};
+
+            _block.fields.forEach((field) => {
+                result[field.key] = field.values;
+            });
+
+            _block.childBlocks.forEach((childBlock) => {
+                let resultChild = {};
+
+                childBlock.fields.forEach((field) => {
+                    resultChild[field.key] = field.values;
+                });
+
+                childBlock.childBlocks.forEach((childChildBlock) => {
+                    if (!resultChild[childChildBlock.name]) {
+                        resultChild[childChildBlock.name] = [];
+                    }
+
+                    let childChildResult = {};
+
+                    childChildBlock.fields.forEach((field) => {
+                        childChildResult[field.key] = field.values;
+                    });
+
+                    resultChild[childChildBlock.name].push(childChildResult)
+                });
+
+                result[childBlock.name] = resultChild;
+            });
+
+            res.json(result)
+        }).catch(err => res.json('page not found'));
+});
+
+/**
  * Get Main populated Blocks with no parents
  * */
 router.get('/main', (req, res) => {
