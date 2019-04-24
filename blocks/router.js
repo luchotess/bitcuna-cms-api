@@ -61,10 +61,38 @@ router.post('/', jsonParser, (req, res) => {
 router.post('/:blockId/field', jsonParser, (req, res) => {
     const field = new Field({...req.body, blockId: req.params.blockId});
 
-    field.save(req.params.blockId)
+    field.save()
         .then(_field => _field.saveFieldToBlock()
             .then(_field => res.json(_field)));
 
+});
+
+/**
+ * Add a multiple fields to a existent Block
+ * */
+router.post('/:blockId/fields', jsonParser, (req, res) => {
+
+    let response = [];
+    let count = 0;
+
+    function saveNextField () {
+        if (count <= (req.body.length - 1)) {
+            let field = new Field({...req.body[count], blockId: req.params.blockId});
+
+            field.save()
+                .then(_savedField => _savedField.saveFieldToBlock()
+                    .then(_savedField => {
+                        response.push(_savedField);
+                        count++;
+
+                        saveNextField();
+                    }));
+        } else {
+            res.json(response);
+        }
+    }
+
+    saveNextField ();
 });
 
 /**

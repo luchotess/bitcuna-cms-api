@@ -21,20 +21,33 @@ function getChildBlocksAndFields (block) {
 
         let resultChild = getBlockFields(childBlock);
 
-        childBlock.childBlocks.forEach((childChildBlock) => {
-
-            if (childChildBlock.isIterable) {
-                if (!resultChild[childChildBlock.name]) {
-                    resultChild[childChildBlock.name] = [];
-                }
-
-                resultChild[childChildBlock.name].push(getBlockFields(childChildBlock))
-            } else {
-                resultChild[childChildBlock.name] = getBlockFields(childChildBlock);
+        if (childBlock.isIterable) {
+            if (!result[childBlock.name]) {
+                result[childBlock.name] = [];
             }
-        });
 
-        result[childBlock.name] = resultChild;
+            if (!result[childBlock.name]) {
+                result[childBlock.name] = [];
+            }
+
+            result[childBlock.name].push(getBlockFields(childBlock))
+
+        } else {
+            childBlock.childBlocks.forEach((childChildBlock) => {
+
+                if (childChildBlock.isIterable) {
+                    if (!resultChild[childChildBlock.name]) {
+                        resultChild[childChildBlock.name] = [];
+                    }
+
+                    resultChild[childChildBlock.name].push(getBlockFields(childChildBlock))
+                } else {
+                    resultChild[childChildBlock.name] = getBlockFields(childChildBlock);
+                }
+            });
+
+            result[childBlock.name] = resultChild;
+        }
     });
 
     return result;
