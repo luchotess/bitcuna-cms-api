@@ -8,6 +8,7 @@ const passport = require('passport');
 const {router: usersRouter} = require('./users');
 const {router: blocksRouter} = require('./blocks');
 const {router: fieldsRouter} = require('./fields');
+const {router: cmsRouter} = require('./cms');
 
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
 
@@ -25,6 +26,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/blocks/', blocksRouter);
+app.use('/api/cms/', cmsRouter);
 app.use('/api/fields/', fieldsRouter);
 app.use('/api/auth/', authRouter);
 
