@@ -39,7 +39,7 @@ router.post('/profiles', (req, res) => {
 });
 
 // Post to register a new user
-router.post('/', [jsonParser, jwtAuth], (req, res) => {
+router.post('/', [jsonParser], (req, res) => {
     const requiredFields = ['username', 'password'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
@@ -122,7 +122,7 @@ router.post('/', [jsonParser, jwtAuth], (req, res) => {
         });
     }
 
-    let {username, password, firstName = '', lastName = '', email, note} = req.body;
+    let {username, password, firstName = '', lastName = '', email, note, name} = req.body;
     // Username and password come in pre-trimmed, otherwise we throw an error
     // before this
     firstName = firstName.trim();
@@ -147,8 +147,7 @@ router.post('/', [jsonParser, jwtAuth], (req, res) => {
             return User.create({
                 username,
                 password: hash,
-                firstName,
-                lastName,
+                name,
                 note,
                 email
             });

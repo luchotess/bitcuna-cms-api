@@ -28,6 +28,16 @@ router.get('/main', (req, res) => {
         .then(_blocks => res.json(_blocks));
 });
 
+router.get('/:blockId/fields', (req, res) => {
+    Block.findOne({_id: req.params.blockId})
+        .populate({
+            path: 'childBlocks fields',
+            populate: {
+                path: 'childBlocks fields'
+            }
+        })
+        .then(_blocks => res.json(_blocks));
+});
 
 /**
  * Get Main populated Blocks with no parents (with values)
