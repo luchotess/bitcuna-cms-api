@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const jwtAuth = passport.authenticate('jwt', {session: false});
 const {Block} = require('./models');
 const {Field} = require('../fields');
 const _ = require('lodash');
@@ -59,7 +60,7 @@ router.get('/main/values', (req, res) => {
 /**
  * Create New Block
  * */
-router.post('/', jsonParser, (req, res) => {
+router.post('/', [jsonParser, jwtAuth], (req, res) => {
     const block = new Block(req.body);
 
     block.save().then(_block => res.json(_block));
@@ -68,7 +69,7 @@ router.post('/', jsonParser, (req, res) => {
 /**
  * Add a field to a existent Block
  * */
-router.post('/:blockId/field', jsonParser, (req, res) => {
+router.post('/:blockId/field', [jsonParser, jwtAuth], (req, res) => {
     const field = new Field({...req.body, blockId: req.params.blockId});
 
     field.save()
@@ -80,7 +81,7 @@ router.post('/:blockId/field', jsonParser, (req, res) => {
 /**
  * Add a multiple fields to a existent Block
  * */
-router.post('/:blockId/fields', jsonParser, (req, res) => {
+router.post('/:blockId/fields', [jsonParser, jwtAuth], (req, res) => {
 
     let response = [];
     let count = 0;
@@ -108,7 +109,7 @@ router.post('/:blockId/fields', jsonParser, (req, res) => {
 /**
  * Add a child block to a existent Block
  * */
-router.post('/:blockId/block', jsonParser, (req, res) => {
+router.post('/:blockId/block', [jsonParser, jwtAuth], (req, res) => {
     const childBlock = new Block({...req.body, parentId: req.params.blockId});
 
     childBlock.save()
