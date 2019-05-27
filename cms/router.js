@@ -739,7 +739,10 @@ router.get('/v2', (req, res) => {
                     'en': 'RENTA GARANTIZADA SAC – RUC 20602076611 BCP $ – USD 193-2423776-1-94 / CCI 00219300242377619415 BCP SOLES 193-2369953-0-17 / CCI00219300236995301718 ** At exchange rate 3.3. We ask you to send the payment to reservas@trendyhost.com.pe to confirm it.'
                 }
             }, {
-                question: {'es': '¿Cuáles son las normas del departamento?', 'en': 'What are the rules of the department?'},
+                question: {
+                    'es': '¿Cuáles son las normas del departamento?',
+                    'en': 'What are the rules of the department?'
+                },
                 answer: {
                     'es': 'Todas las personas deben de identificarse y estar registradas. No se permitirá el ingreso a personas que no estén previamente registradas. No está permitido el consumo de bebidas alcohólicas. Queda terminantemente prohibido fumar en el departamento y en las áreas comunes (multa de USD 500). No perturbar la tranquilidad de los ocupantes con música, ruidos o escándalos indecorosas. No está permitido mascotas. No exceder la capacidad del aforo del departamento. No es posible colgar prendas u otros elementos, en ventanas, balcones y cualquier lugar visible. Recojo de la basura en las mañana por HK o botarlos en el estacionamiento directamente. La penalidad de pérdida de llave es de USD 50.',
                     'en': 'All persons must be identified and registered. Entry will not be allowed to people who are not previously registered. The consumption of alcoholic beverages is not allowed.  It is strictly forbidden to smoke in the apartment and in the common areas (fine of USD 500).  Do not disturb the tranquility of the occupants with music, noise or indecent scandals.  Pets are not allowed.  Do not exceed the capacity of the department.  It is not possible to hang garments or other items, in windows, balconies and any visible place.  Pick up the trash in the morning by HK or throw it in the parking lot directly. The key loss penalty is USD 50.'
@@ -784,7 +787,10 @@ router.get('/v2', (req, res) => {
                     'en': 'We make available and on request with your host: hair dryer, clothes iron, ironing board, extra blankets, ear covers and heater.'
                 }
             }, {
-                question: {'es': '¿Cuándo recibiré mi comprobante de pago?', 'en': 'When will I receive my proof of payment?'},
+                question: {
+                    'es': '¿Cuándo recibiré mi comprobante de pago?',
+                    'en': 'When will I receive my proof of payment?'
+                },
                 answer: {
                     'es': 'Al finalizar la estadía, se envía a través de un correo (el que se deja en el registro) la boleta electrónica del pago total.',
                     'en': 'At the end of the stay, the electronic payment slip is sent by mail (which is left in the register).'
@@ -807,7 +813,180 @@ router.get('/v2', (req, res) => {
                     'es': 'Claro que sí, respetamos la tarifa confirmada o ya cotizada y este pedido deberá de ser solicitado a través de un correo a : reservas@trendyhost.com.pe',
                     'en': 'Of course, we respect the confirmed or already quoted rate and this request must be requested by sending an email to: reservas@trendyhost.com.pe6'
                 }
-            }]
+            }],
+        testimonials: [
+            {
+                author: {
+                    'es': '',
+                    'en': ''
+                },
+                description: {
+                    'es': '',
+                    'en': ''
+                },
+                avatar: {
+                    'es': '',
+                    'en': ''
+                }
+            },{
+                author: {
+                    'es': 'Kiensabe',
+                    'en': 'Kiensabe'
+                },
+                description: {
+                    'es': 'The location was great and the price was phenomenal. Right in Barranco with a short walk to all the major attractions. The room was a little snug, but perfect if you´re going to be out  exploring.',
+                    'en': 'The location was great and the price was phenomenal. Right in Barranco with a short walk to all the major attractions. The room was a little snug, but perfect if you´re going to be out  exploring.'
+                },
+                avatar: {
+                    'es': 'HmOvgDNh.jpg',
+                    'en': 'HmOvgDNh.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Denis',
+                    'en': 'Denis'
+                },
+                description: {
+                    'es': 'New, clean, free private parking, nice rooms, good location in Barranco',
+                    'en': 'New, clean, free private parking, nice rooms, good location in Barranco'
+                },
+                avatar: {
+                    'es': 'denis.jpg',
+                    'en': 'denis.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Santiago',
+                    'en': 'Santiago'
+                },
+                description: {
+                    'es': 'Nice apartment. Great bed. Jesús was very helpful',
+                    'en': 'Nice apartment. Great bed. Jesús was very helpful'
+                },
+                avatar: {
+                    'es': 'S.jpg',
+                    'en': 'S.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Rhea',
+                    'en': 'Rhea'
+                },
+                description: {
+                    'es': 'The property and amenities were excellent. Location was close to everything in Barranco.',
+                    'en': 'The property and amenities were excellent. Location was close to everything in Barranco.'
+                },
+                avatar: {
+                    'es': 'R.jpg',
+                    'en': 'R.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Demond',
+                    'en': 'Demond'
+                },
+                description: {
+                    'es': 'Great location! Very walkable to bars, restaurants and nightlife. The room was very clean, comfortable beds. Nice courtyard and gym!',
+                    'en': 'Great location! Very walkable to bars, restaurants and nightlife. The room was very clean, comfortable beds. Nice courtyard and gym!'
+                },
+                avatar: {
+                    'es': 'D.jpg',
+                    'en': 'D.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Thais',
+                    'en': 'Thais'
+                },
+                description: {
+                    'es': 'Very comfortable bed and great location to be in Barranco!',
+                    'en': 'Very comfortable bed and great location to be in Barranco!'
+                },
+                avatar: {
+                    'es': 'T.jpg',
+                    'en': 'T.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Kendall',
+                    'en': 'Kendall'
+                },
+                description: {
+                    'es': 'We had a great stay with Trendy Host. The location is perfect. We loved staying in Barranco and the apartment is just a short walk to the square, parks overlooking the ocean, and lots of restaurants and cafés nearby. The apartment was clean, comfortable, and had a lovely modern decor. We enjoyed  everything.',
+                    'en': 'We had a great stay with Trendy Host. The location is perfect. We loved staying in Barranco and the apartment is just a short walk to the square, parks overlooking the ocean, and lots of restaurants and cafés nearby. The apartment was clean, comfortable, and had a lovely modern decor. We enjoyed  everything.'
+                },
+                avatar: {
+                    'es': 'K.jpg',
+                    'en': 'K.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Alexandra',
+                    'en': 'Alexandra'
+                },
+                description: {
+                    'es': 'I loved that the place was modern! Hard to find in Peru. The front desk staff were SOOO friendly and helpful, and are there 24/7. Also it was very safe because there is a locked gate to get in that front desk opens for you. I never met the owner of trendy host, but was able to get very quick replies whenever I messaged through bookings.com. There was WiFi and A/C. If you want to stay in Barranco, this isa 5 min walk to the Center/Bridge. If you want to be in Miraflores, this is about a 15 min drive away. Stayed as a group of 3 and enjoyed ourselves.',
+                    'en': 'I loved that the place was modern! Hard to find in Peru. The front desk staff were SOOO friendly and helpful, and are there 24/7. Also it was very safe because there is a locked gate to get in that front desk opens for you. I never met the owner of trendy host, but was able to get very quick replies whenever I messaged through bookings.com. There was WiFi and A/C. If you want to stay in Barranco, this isa 5 min walk to the Center/Bridge. If you want to be in Miraflores, this is about a 15 min drive away. Stayed as a group of 3 and enjoyed ourselves.'
+                },
+                avatar: {
+                    'es': 'A.jpg',
+                    'en': 'A.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Dereck',
+                    'en': 'Dereck'
+                },
+                description: {
+                    'es': 'Property had a great location. I really enjoyed staying in Barranco vs. other areas of Lima. This place has everything you need in a great location. It is a MUCH better value than a hostel.',
+                    'en': 'Property had a great location. I really enjoyed staying in Barranco vs. other areas of Lima. This place has everything you need in a great location. It is a MUCH better value than a hostel.'
+                },
+                avatar: {
+                    'es': 'D.jpg',
+                    'en': 'D.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Alexandra',
+                    'en': 'Alexandra'
+                },
+                description: {
+                    'es': 'The location of this place was great. Very close walking to many things. The apartment was nice. Could easily sleep 4 although there was only 3 of us.',
+                    'en': 'The location of this place was great. Very close walking to many things. The apartment was nice. Could easily sleep 4 although there was only 3 of us.'
+                },
+                avatar: {
+                    'es': 'A.jpg',
+                    'en': 'A.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Andrea',
+                    'en': 'Andrea'
+                },
+                description: {
+                    'es': 'Checking in was very easy and straightforward, the front staff was very nice. The apartment looked just like the pictures! It was very clean and I enjoyed that it had air conditioning. The facilities looked very well kept and new.',
+                    'en': 'Checking in was very easy and straightforward, the front staff was very nice. The apartment looked just like the pictures! It was very clean and I enjoyed that it had air conditioning. The facilities looked very well kept and new.'
+                },
+                avatar: {
+                    'es': 'A.jpg',
+                    'en': 'A.jpg'
+                }
+            },{
+                author: {
+                    'es': 'Thais',
+                    'en': 'Thais'
+                },
+                description: {
+                    'es': 'Very comfortable bed and great location to be in Barranco!',
+                    'en': 'Very comfortable bed and great location to be in Barranco!'
+                },
+                avatar: {
+                    'es': 'T.jpg',
+                    'en': 'T.jpg'
+                }
+            },
+
+        ]
     });
 });
 
