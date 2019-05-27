@@ -817,16 +817,16 @@ router.get('/v2', (req, res) => {
         testimonials: [
             {
                 author: {
-                    'es': '',
-                    'en': ''
+                    'es': 'Angela',
+                    'en': 'Angela'
                 },
                 description: {
-                    'es': '',
-                    'en': ''
+                    'es': 'Really nice beds and bedding, well stocked kitchen, stored bags for us until 7pm, nice shower when hot, well decorated, enjoyable common living room, let us checkout an hour late, well run. ',
+                    'en': 'Really nice beds and bedding, well stocked kitchen, stored bags for us until 7pm, nice shower when hot, well decorated, enjoyable common living room, let us checkout an hour late, well run. '
                 },
                 avatar: {
-                    'es': '',
-                    'en': ''
+                    'es': 'A.jpg',
+                    'en': 'A.jpg'
                 }
             },{
                 author: {
