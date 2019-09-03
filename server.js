@@ -6,10 +6,8 @@ const morgan = require('morgan');
 const passport = require('passport');
 
 const {router: usersRouter} = require('./users');
-const {router: blocksRouter} = require('./blocks');
-const {router: fieldsRouter} = require('./fields');
 const {router: cmsRouter} = require('./cms');
-
+const cors = require('cors');
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
 
 mongoose.Promise = global.Promise;
@@ -20,18 +18,17 @@ const app = express();
 
 // Logging
 app.use(morgan('common'));
+app.use(cors());
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
-app.use('/api/blocks/', blocksRouter);
 app.use('/api/cms/', cmsRouter);
-app.use('/api/fields/', fieldsRouter);
 app.use('/api/auth/', authRouter);
 
-// app.use('/api/images', express.static('uploads'));
-//
+app.use('/api/uploads', express.static('uploads'));
+
 app.get('/api/check', (req, res) => res.json({message: 'ok'}));
 
 app.use('*', (req, res) => {

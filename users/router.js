@@ -22,6 +22,22 @@ const profilesStorage = multer.diskStorage({
 
 const uploadProfilesAvatar = multer({storage: profilesStorage}).single('photo');
 
+router.post('/profiles', (req, res) => {
+    let path = '';
+
+    uploadProfilesAvatar(req, res, function (err) {
+        if (err) {
+            // An error occurred when uploading
+            console.log(err);
+            return res.status(422).send(err)
+        }
+        // No error occured.
+        path = req.file.path;
+        console.log(req.file);
+        return res.send("Upload Completed for " + path);
+    });
+});
+
 // Post to register a new user
 router.post('/', [jsonParser, jwtAuth], (req, res) => {
     const requiredFields = ['username', 'password'];
